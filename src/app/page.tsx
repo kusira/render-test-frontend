@@ -11,7 +11,7 @@ export default function Home() {
         e.preventDefault();
 
         try {
-            const res = await fetch('http://localhost:8000/api/process', {
+            const res = await fetch('https://render-test-backend-e5mg.onrender.com/api/process', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
