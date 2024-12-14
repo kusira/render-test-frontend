@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function Home() {
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
     const [response, setResponse] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
-            const res = await fetch('https://render-test-backend-ddg7.onrender.com', {
-                method: 'POST',
+            const res = await fetch("http://render-test-backend-ddg7.onrender.com/api/process", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ name, age: parseInt(age, 10) }),
             });
@@ -26,8 +26,8 @@ export default function Home() {
             const data = await res.json();
             setResponse(data.message);
         } catch (error) {
-            console.error('Error:', error);
-            setResponse('An error occurred while processing your request.');
+            console.error("Error:", error);
+            setResponse("An error occurred while processing your request.");
         }
     };
 
